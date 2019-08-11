@@ -151,4 +151,28 @@
       update_time = now()
     where id = #{id,jdbcType=INTEGER}
   </update>
+
+  <!--int checkUsername(String username); -->
+  <select id="checkUsername" resultType="int" parameterType="String">
+    SELECT count(1)
+    from mmall_user
+    where username = #{username}
+  </select>
+
+  <!-- User selectLogin(@Param("username")String username,@Param("password")String password);-->
+  <select id="selectLogin" resultMap="BaseResultMap" parameterMap="map">
+    select
+    <include refid="Base_Column_List"/>
+    from mmall_user
+    where username = #{username}
+    and password = #{password}
+  </select>
+
+  <!-- int checkEmail(String email) -->
+  <select id="checkEmail" resultType="int" parameterType="String">
+    select count(1)
+    from mmall_user
+    where email = #{email}
+  </select>
+
 </mapper>
