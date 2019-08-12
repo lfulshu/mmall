@@ -20,17 +20,31 @@ public class UserServiceImpl implements IUserService {
     @Autowired
     private UserMapper userMapper;
 
+    @Override
     public ServerResponse<String> checkValid(String str, String type){
         if (StringUtils.isNotBlank(type)){
             //开始校验
-            if ()
+            if(Const.USERNAME.equals(type)){
+                int resultCount = userMapper.checkUsername(str);
+                if (resultCount>0){
+                    return ServerResponse.createByErrorMessage("用户名已存在");
+                }
+            }
+            if (Const.EMAIL.equals(type)){
+                int resultCount = userMapper.checkEmail(str);
+                if (resultCount>0){
+                    return ServerResponse.createByErrorMessage("邮箱已存在");
+                }
+            }
         }else {
             return ServerResponse.createByErrorMessage("参数错误");
         }
+        return ServerResponse.createByErrorMessage("参数错误");
     }
 
     @Override
     public ServerResponse<String> register(User user){
+
         int resultCount = userMapper.checkUsername(user.getUsername());
         if (resultCount > 0){
             return ServerResponse.createByErrorMessage("用户名已存在");
@@ -59,7 +73,7 @@ public class UserServiceImpl implements IUserService {
             return ServerResponse.createByErrorMessage("用户名已存在");
         }
         /**
-         * todo 密码登陆MD5
+         * todo 密码登陆 MD5加密
          */
         String md5password = MD5Util.MD5EncodeUtf8(password);
         User user = userMapper.selectLogin(username,md5password);

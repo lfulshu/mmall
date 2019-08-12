@@ -15,6 +15,9 @@ import javax.servlet.http.HttpSession;
 /**
  * @Author liizzz
  * @Data 2019/8/11 12:04
+ *
+ * 注意，此控制器前缀加了 /user/
+ * 主要实现 用户登录，注册，退出，校验，获取用户信息
  */
 @Controller
 @RequestMapping(value = "/user/")
@@ -24,16 +27,30 @@ public class UserController {
     private IUserService iUserService;
 
     /**
+     * 获取用户信息
+     */
+    @RequestMapping(value = "get_user_info.do", method = RequestMethod.POST)
+    public ServerResponse<User> getUserInfo(HttpSession session){
+        User user = (User) session.getAttribute(Const.CURRENT_USER);
+        if (user != null){
+            return ServerResponse.createBySuccess(user);
+        }
+        return ServerResponse.createByErrorMessage("用户未登录，无法获取到当前用户的信息");
+    }
+
+    /**
      * 校验
      */
+    @RequestMapping(value = "check_valid.do",method = RequestMethod.POST)
+    @ResponseBody
     public ServerResponse<String> checkValid(String str, String type){
-
+        return iUserService.checkValid(str,type);
     }
 
     /**
      * 注册
      */
-    @RequestMapping(value = "register.do")
+    @RequestMapping(value = "register.do", method = RequestMethod.POST)
     public ServerResponse<String> register(User user){
         return iUserService.register(user);
     }

@@ -9,6 +9,8 @@ public class Const {
      * 常量类
      */
     public static final String CURRENT_USER = "currentUser";
+    public static final String USERNAME = "usernmae";
+    public static final String EMAIL = "email";
 
     public interface Role{
         int ROLE_CUSTOMER = 0;//普通用户
