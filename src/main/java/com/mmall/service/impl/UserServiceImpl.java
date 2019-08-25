@@ -56,7 +56,7 @@ public class UserServiceImpl implements IUserService {
     public ServerResponse<User> login(String username, String password) {
         int resultCount = userMapper.checkUsername(username);
         if (resultCount == 0){
-            return ServerResponse.createByErrorMessage("用户名已存在");
+            return ServerResponse.createByErrorMessage("用户名不存在");
         }
         /**
          * todo 密码登陆MD5

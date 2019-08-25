@@ -23,7 +23,7 @@ public interface UserMapper {
 
     /**
      * mybatis需要传递多个参数的时候，需要使用到@Param注解
-     * 登陆操作，如果查询用户民和密码存在于数据库中，则登陆正常
+     * 登陆操作，如果查询用户名和密码存在于数据库中，则登陆正常，密码是MD5加密后的密文
      */
     User selectLogin(@Param("username")String username,@Param("password")String password);
 
