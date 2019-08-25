@@ -17,12 +17,13 @@ public interface UserMapper {
     int updateByPrimaryKey(User record);
 
     /**
-     * 自定义mapper接口
+     * 根据用户名查询此用户的个数，一般是用户名不会重复，所以，可以用作检验，当前用户民是否已经被使用了。
      */
     int checkUsername(String username);
 
     /**
      * mybatis需要传递多个参数的时候，需要使用到@Param注解
+     * 登陆操作，如果查询用户民和密码存在于数据库中，则登陆正常
      */
     User selectLogin(@Param("username")String username,@Param("password")String password);
 
