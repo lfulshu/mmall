@@ -79,10 +79,4 @@ public class UserController {
         return response;
     }
 
-    @RequestMapping("test.do")
-    @ResponseBody
-    public String test(){
-        return "hello";
-    }
-
 }
