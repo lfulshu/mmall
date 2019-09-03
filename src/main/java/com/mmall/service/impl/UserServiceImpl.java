@@ -84,5 +84,6 @@ public class UserServiceImpl implements IUserService {
         //执行到这一步的时候如果都还没有return，那么就登陆成功，然后将密码置为空
         user.setPassword(StringUtils.EMPTY);
         return ServerResponse.createBySuccess("登陆成功",user);
+
     }
 }
