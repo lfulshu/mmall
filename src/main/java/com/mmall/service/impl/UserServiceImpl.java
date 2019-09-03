@@ -21,6 +21,11 @@ public class UserServiceImpl implements IUserService {
     private UserMapper userMapper;
 
     @Override
+    public ServerResponse selectQuestion(String username) {
+        return ServerResponse.createBySuccessMessage("none");
+    }
+
+    @Override
     public ServerResponse<String> checkValid(String str, String type){
         if (StringUtils.isNotBlank(type)){
             //开始校验

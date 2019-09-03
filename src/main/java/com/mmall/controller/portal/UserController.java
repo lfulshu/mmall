@@ -27,6 +27,15 @@ public class UserController {
     private IUserService iUserService;
 
     /**
+     * 忘记密码，根据问题找回密码
+     */
+    @RequestMapping(value = "forget_get_question.do", method = RequestMethod.POST)
+    @ResponseBody
+    public ServerResponse forgetGetQuestion(String username){
+        return iUserService.selectQuestion(username);
+    }
+
+    /**
      * 获取用户信息
      */
     @RequestMapping(value = "get_user_info.do", method = RequestMethod.POST)
