@@ -154,7 +154,7 @@
 
   <!--int checkUsername(String username); -->
   <select id="checkUsername" resultType="int" parameterType="String">
-    SELECT count(1)
+    select count(1)
     from mmall_user
     where username = #{username}
   </select>
