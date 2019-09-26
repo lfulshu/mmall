@@ -20,14 +20,14 @@ public class UserServiceImpl implements IUserService {
     @Autowired
     private UserMapper userMapper;
 
-    public ServerResponse<String> checkValid(String str, String type){
-        if (StringUtils.isNotBlank(type)){
-            //开始校验
-            if ()
-        }else {
-            return ServerResponse.createByErrorMessage("参数错误");
-        }
-    }
+//    public ServerResponse<String> checkValid(String str, String type){
+//        if (StringUtils.isNotBlank(type)){
+//            //开始校验
+//            if ()
+//        }else {
+//            return ServerResponse.createByErrorMessage("参数错误");
+//        }
+//    }
 
     @Override
     public ServerResponse<String> register(User user){

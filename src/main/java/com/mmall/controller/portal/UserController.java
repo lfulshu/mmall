@@ -26,9 +26,9 @@ public class UserController {
     /**
      * 校验
      */
-    public ServerResponse<String> checkValid(String str, String type){
-
-    }
+//    public ServerResponse<String> checkValid(String str, String type){
+//
+//    }
 
     /**
      * 注册

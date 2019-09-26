@@ -27,5 +27,8 @@ public interface UserMapper {
      */
     User selectLogin(@Param("username")String username,@Param("password")String password);
 
+    /**
+     * 查询邮箱，是否存在
+     */
     int checkEmail(String email);
 }
